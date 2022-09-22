@@ -69,6 +69,16 @@ C:\IIS EXPRESS\BackEnd\obj\Debug\net6.0\refint\BackEnd.dll
 C:\IIS EXPRESS\BackEnd\obj\Debug\net6.0\BackEnd.pdb
 C:\IIS EXPRESS\BackEnd\obj\Debug\net6.0\BackEnd.genruntimeconfig.cache
 C:\IIS EXPRESS\BackEnd\obj\Debug\net6.0\ref\BackEnd.dll
+C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\BackEnd.csproj.AssemblyReference.cache
+C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\BackEnd.GeneratedMSBuildEditorConfig.editorconfig
+C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\BackEnd.AssemblyInfoInputs.cache
+C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\BackEnd.AssemblyInfo.cs
+C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\BackEnd.csproj.CoreCompileInputs.cache
+C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\BackEnd.MvcApplicationPartsAssemblyInfo.cs
+C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\BackEnd.MvcApplicationPartsAssemblyInfo.cache
+C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\BackEnd.dll
+C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\refint\BackEnd.dll
+C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\BackEnd.pdb
 C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\bin\Debug\net6.0\appsettings.json
 C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\bin\Debug\net6.0\appsettings.Development.json
 C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\bin\Debug\net6.0\BackEnd.exe
@@ -124,19 +134,9 @@ C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\bin\Debug\net6.0\runtimes\win\lib\ne
 C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\BackEnd.csproj.AssemblyReference.cache
-C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\BackEnd.GeneratedMSBuildEditorConfig.editorconfig
-C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\BackEnd.AssemblyInfoInputs.cache
-C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\BackEnd.AssemblyInfo.cs
-C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\BackEnd.csproj.CoreCompileInputs.cache
-C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\BackEnd.MvcApplicationPartsAssemblyInfo.cs
-C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\BackEnd.MvcApplicationPartsAssemblyInfo.cache
 C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\staticwebassets.build.json
 C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\staticwebassets.development.json
 C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\scopedcss\bundle\BackEnd.styles.css
 C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\BackEnd.csproj.CopyComplete
-C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\BackEnd.dll
-C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\refint\BackEnd.dll
-C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\BackEnd.pdb
 C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\BackEnd.genruntimeconfig.cache
 C:\PW II\PROYECTO FINAL\SistemaCine\BackEnd\obj\Debug\net6.0\ref\BackEnd.dll

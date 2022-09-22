@@ -2,34 +2,35 @@
 using BackEnd.Data;
 using BackEnd.DTOs.Categoria;
 using BackEnd.DTOs;
+using BackEnd.DTOs.Pelicula;
 using BackEnd.Helpers;
-using BackEnd.Models;
 using Microsoft.EntityFrameworkCore;
-using BackEnd.DTOs.Usuario;
+using BackEnd.Models;
 
 namespace BackEnd.RN
 {
-    public class UsuarioRN
+    public class PeliculaRN
     {
+
         private readonly CineContext context;
         private readonly IMapper mapper;
 
-        public UsuarioRN(CineContext context, IMapper mapper)
+        public PeliculaRN(CineContext context, IMapper mapper)
         {
             this.context = context;
             this.mapper = mapper;
         }
 
-        public async Task<ResponseListDTO<UsuarioDTO>> getAll(PaginacionDTO paginacion)
+        public async Task<ResponseListDTO<PeliculaDTO>> getAll(PaginacionDTO paginacion)
         {
-            var query = context.Usuarios.AsQueryable();
+            var query = context.Peliculas.AsQueryable();
 
             var datosPaginacion = await query.datosPaginacion(paginacion.CantidadRegistrosPorPagina);
             var entidades = await query.Paginar(paginacion).ToListAsync();
 
-            var list = mapper.Map<List<UsuarioDTO>>(entidades);
+            var list = mapper.Map<List<PeliculaDTO>>(entidades);
 
-            return new ResponseListDTO<UsuarioDTO>
+            return new ResponseListDTO<PeliculaDTO>
             {
                 quanty = int.Parse(datosPaginacion["cantidadPaginas"]),
                 page = paginacion.Pagina,
@@ -37,35 +38,34 @@ namespace BackEnd.RN
                 value = list
             };
         }
-
-        public async Task<ResponseDTO<UsuarioDTO>> getById(int id)
+        public async Task<ResponseDTO<PeliculaDTO>> getById(int id)
         {
 
-            var entity = await context.Usuarios
+            var entity = await context.Peliculas
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             if (entity == null)
                 throw new Exception("No existe el recurso");
 
-            var usuarioDTO = mapper.Map<UsuarioDTO>(entity);
+            var peliculaDTO = mapper.Map<PeliculaDTO>(entity);
 
 
-            return new ResponseDTO<UsuarioDTO>
+            return new ResponseDTO<PeliculaDTO>
             {
                 Success = true,
                 StatusCode = 200,
                 Message = "OK",
-                value = usuarioDTO,
+                value = peliculaDTO,
             };
 
 
         }
-        public async Task<ResponseDTO<UsuarioInsertDTO>> postInsert(UsuarioInsertDTO usuarioInsertDTO)
+        public async Task<ResponseDTO<PeliculaInsertDTO>> postInsert(PeliculaInsertDTO peliculaInsertDTO)
         {
 
-            var entity = mapper.Map<Usuario>(usuarioInsertDTO);
+            var entity = mapper.Map<Pelicula>(peliculaInsertDTO);
 
-            context.Usuarios.Add(entity);
+            context.Peliculas.Add(entity);
 
             await context.SaveChangesAsync();
 
@@ -73,62 +73,62 @@ namespace BackEnd.RN
                 throw new Exception("No existe el recurso");
 
             //var categoriaDTO = mapper.Map<CategoriaDTO>(entity);
-            return new ResponseDTO<UsuarioInsertDTO>
+            return new ResponseDTO<PeliculaInsertDTO>
             {
                 Success = true,
                 StatusCode = 200,
                 Message = "OK",
-                value = usuarioInsertDTO,
+                value = peliculaInsertDTO,
             };
 
         }
-        public async Task<ResponseDTO<UsuarioDTO>> putUpdate(int id, UsuarioUpdateDTO usuarioUpdateDTO)
+        public async Task<ResponseDTO<PeliculaDTO>> putUpdate(int id, PeliculaUpdateDTO peliculaUpdateDTO)
         {
 
-            var entity = await context.Usuarios.FindAsync(id);
+            var entity = await context.Peliculas.FindAsync(id);
 
             if (entity == null)
                 throw new Exception("El Registro para actualizar no existe");
 
-            entity = mapper.Map(usuarioUpdateDTO, entity);
+            entity = mapper.Map(peliculaUpdateDTO, entity);
 
             // context.Entry(autor).State = EntityState.Modified;
             await context.SaveChangesAsync();
 
-            var usuarioUpdate = mapper.Map<UsuarioDTO>(entity);
+            var peliculaUpdate = mapper.Map<PeliculaDTO>(entity);
 
             //var categoriaDTO = mapper.Map<CategoriaDTO>(entity);
-            return new ResponseDTO<UsuarioDTO>
+            return new ResponseDTO<PeliculaDTO>
             {
                 Success = true,
                 StatusCode = 200,
                 Message = "OK",
-                value = usuarioUpdate,
+                value = peliculaUpdate,
             };
 
         }
-        public async Task<ResponseDTO<UsuarioDTO>> delete(int id)
+        public async Task<ResponseDTO<PeliculaDTO>> delete(int id)
         {
 
-            var entity = await context.Usuarios.FindAsync(id);
+            var entity = await context.Peliculas.FindAsync(id);
 
             if (entity == null)
                 throw new Exception("El Registro para actualizar no existe");
 
-            context.Usuarios.Remove(entity);
+            context.Peliculas.Remove(entity);
 
             // context.Entry(autor).State = EntityState.Modified;
             await context.SaveChangesAsync();
 
-            var usuario = mapper.Map<UsuarioDTO>(entity);
+            var pelicula = mapper.Map<PeliculaDTO>(entity);
 
             //var categoriaDTO = mapper.Map<CategoriaDTO>(entity);
-            return new ResponseDTO<UsuarioDTO>
+            return new ResponseDTO<PeliculaDTO>
             {
                 Success = true,
                 StatusCode = 200,
                 Message = "OK",
-                value = usuario,
+                value = pelicula,
             };
 
         }

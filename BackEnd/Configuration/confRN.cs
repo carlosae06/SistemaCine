@@ -17,7 +17,12 @@ namespace BackEnd.Configuration
         private static IServiceCollection RegisterBussinessRules(this IServiceCollection services)
         {
             // here come our Dependency Inyection
+            services.AddTransient<PeliculaRN>();
             services.AddTransient<CategoriaRN>();
+            services.AddTransient<PersonaRN>();
+            services.AddTransient<UsuarioRN>();
+            services.AddTransient<ClienteRN>();
+
 
 
 

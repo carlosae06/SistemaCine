@@ -2,7 +2,7 @@
 
 namespace BackEnd.DTOs.Persona
 {
-    public class PersonaInsertarDTO
+    public class PersonaInsertDTO
     {
         [Required]
         [StringLength(20)]
