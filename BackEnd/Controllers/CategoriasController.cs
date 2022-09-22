@@ -11,7 +11,7 @@ namespace BackEnd.Controllers
     public class CategoriasController : ControllerBase
     {
         private readonly CategoriaRN categoriaRN;
-
+        //tengo sueño
         public CategoriasController(CategoriaRN categoriaRN)
         {
             this.categoriaRN = categoriaRN;
