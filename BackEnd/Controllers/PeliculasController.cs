@@ -1,31 +1,32 @@
-﻿using BackEnd.DTOs;
-using BackEnd.DTOs.Categoria;
+﻿using BackEnd.DTOs.Categoria;
+using BackEnd.DTOs;
 using BackEnd.RN;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using BackEnd.DTOs.Pelicula;
 
 namespace BackEnd.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoriasController : ControllerBase
+    public class PeliculasController : ControllerBase
     {
-        private readonly CategoriaRN categoriaRN;
+        private readonly PeliculaRN peliculaRN;
 
-        public CategoriasController(CategoriaRN categoriaRN)
+        public PeliculasController(PeliculaRN peliculaRN)
         {
-            this.categoriaRN = categoriaRN;
+            this.peliculaRN = peliculaRN;
 
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(ResponseListDTO<CategoriaDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseListDTO<PeliculaDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> Get([FromQuery] PaginacionDTO paginacion)
         {
             try
             {
-                var datos = await categoriaRN.getAll(paginacion);
+                var datos = await peliculaRN.getAll(paginacion);
                 return Ok(datos);
 
             }
@@ -34,7 +35,6 @@ namespace BackEnd.Controllers
                 return new ResponseError(StatusCodes.Status400BadRequest, ex.Message).GetObjectResult();
             }
         }
-
         [HttpGet("{id:int}")]
         [ProducesResponseType(typeof(ResponseListDTO<CategoriaDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status400BadRequest)]
@@ -42,7 +42,7 @@ namespace BackEnd.Controllers
         {
             try
             {
-                var entity = await categoriaRN.getById(id);
+                var entity = await peliculaRN.getById(id);
                 return Ok(entity);
 
             }
@@ -55,11 +55,11 @@ namespace BackEnd.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(ResponseListDTO<CategoriaDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult> postInsert([FromBody] CategoriaInsertDTO categoriaInsertDTO)
+        public async Task<ActionResult> postInsert([FromBody] PeliculaInsertDTO peliculaInsertDTO)
         {
             try
             {
-                var entity = await categoriaRN.postInsert(categoriaInsertDTO);
+                var entity = await peliculaRN.postInsert(peliculaInsertDTO);
                 return Ok(entity);
 
             }
@@ -71,11 +71,11 @@ namespace BackEnd.Controllers
         [HttpPut("{id:int}")]
         [ProducesResponseType(typeof(ResponseListDTO<CategoriaDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult> putUpdate(int id, [FromBody] CategoriaUpdateDTO categoriaUpdateDTO)
+        public async Task<ActionResult> putUpdate(int id, [FromBody] PeliculaUpdateDTO peliculaUpdateDTO)
         {
             try
             {
-                var entity = await categoriaRN.putUpdate(id, categoriaUpdateDTO);
+                var entity = await peliculaRN.putUpdate(id, peliculaUpdateDTO);
                 return Ok(entity);
 
             }
@@ -92,7 +92,7 @@ namespace BackEnd.Controllers
         {
             try
             {
-                var entity = await categoriaRN.delete(id);
+                var entity = await peliculaRN.delete(id);
                 return Ok(entity);
 
             }

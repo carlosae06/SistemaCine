@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\PW II\\PROYECTO FINAL\\SistemaCine\\BackEnd\\BackEnd.csproj": {}
+    "C:\\IIS EXPRESS\\BackEnd\\BackEnd.csproj": {}
   },
   "projects": {
-    "C:\\PW II\\PROYECTO FINAL\\SistemaCine\\BackEnd\\BackEnd.csproj": {
+    "C:\\IIS EXPRESS\\BackEnd\\BackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\PW II\\PROYECTO FINAL\\SistemaCine\\BackEnd\\BackEnd.csproj",
+        "projectUniqueName": "C:\\IIS EXPRESS\\BackEnd\\BackEnd.csproj",
         "projectName": "BackEnd",
-        "projectPath": "C:\\PW II\\PROYECTO FINAL\\SistemaCine\\BackEnd\\BackEnd.csproj",
-        "packagesPath": "C:\\Users\\GATEWAY\\.nuget\\packages\\",
-        "outputPath": "C:\\PW II\\PROYECTO FINAL\\SistemaCine\\BackEnd\\obj\\",
+        "projectPath": "C:\\IIS EXPRESS\\BackEnd\\BackEnd.csproj",
+        "packagesPath": "C:\\Users\\carlos\\.nuget\\packages\\",
+        "outputPath": "C:\\IIS EXPRESS\\BackEnd\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\GATEWAY\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\carlos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
