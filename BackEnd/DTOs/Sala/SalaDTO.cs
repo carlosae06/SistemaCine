@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BackEnd.DTOs
+namespace BackEnd.DTOs.Sala
 {
-    public class RolDTO
+    public class SalaDTO
     {
         [Required]
         public int Id { get; set; }
@@ -10,8 +10,11 @@ namespace BackEnd.DTOs
         [StringLength(10)]
         public string Cod { get; set; } = null!;
         [Required]
-        [StringLength(50)]
-        public string Nombre { get; set; } = null!;
+        public int Fila { get; set; }
+        [Required]
+        public int Columna { get; set; }
+        [Required]
+        public int Capacidad { get; set; }
 
         public bool? Estado { get; set; }
     }

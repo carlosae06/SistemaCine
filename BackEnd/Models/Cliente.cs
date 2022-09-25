@@ -16,6 +16,7 @@ namespace BackEnd.Models
         public string? Correo { get; set; }
         public bool? Estado { get; set; }
         public int Idpersona { get; set; }
+        public string? Tipo { get; set; }
 
         public virtual Persona IdpersonaNavigation { get; set; } = null!;
         public virtual ICollection<Ticket> Tickets { get; set; }

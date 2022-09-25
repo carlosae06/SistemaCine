@@ -16,9 +16,9 @@ namespace BackEnd.Models
         public string TipoPago { get; set; } = null!;
         public int IdButaca { get; set; }
         public int IdCliente { get; set; }
+        public int? IdUsuario { get; set; }
         public int IdFunsion { get; set; }
         public int IdVenta { get; set; }
-        public int? IdUsuario { get; set; }
 
         public virtual Butaca IdButacaNavigation { get; set; } = null!;
         public virtual Cliente IdClienteNavigation { get; set; } = null!;
