@@ -20,5 +20,8 @@ namespace BackEnd.DTOs.Usuario
         public int Idpersona { get; set; }
         [Required]
         public int IdRol { get; set; }
+        public int RolId { get; set; }
+        public string RolCod { get; set; } = string.Empty!;
+        public string RolNombre { get; set; } = string.Empty!;
     }
 }

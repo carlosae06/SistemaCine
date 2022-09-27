@@ -1,47 +1,36 @@
-﻿using AutoMapper;
-using BackEnd.Data;
+﻿using BackEnd.DTOs.Categoria;
 using BackEnd.DTOs;
-using BackEnd.DTOs.Categoria;
-using BackEnd.DTOs.Cliente;
-using BackEnd.DTOs.Persona;
-using BackEnd.DTOs.Usuario;
-using BackEnd.Helpers;
-using BackEnd.Models;
 using BackEnd.RN;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using BackEnd.DTOs.Venta;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BackEnd.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class ClienteController : ControllerBase
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public class VentasController : ControllerBase
     {
-        private readonly ClienteRN clienteRN;
 
-        public ClienteController(ClienteRN clienteRN)
+        private readonly VentaRN ventaRN;
+
+        public VentasController(VentaRN ventaRN)
         {
-            this.clienteRN = clienteRN;
+            this.ventaRN = ventaRN;
 
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(ResponseListDTO<ClienteDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseListDTO<VentaDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> Get([FromQuery] PaginacionDTO paginacion)
         {
             try
             {
-                var datos = await clienteRN.getAll(paginacion);
+                var datos = await ventaRN.getAll(paginacion);
                 return Ok(datos);
 
             }
@@ -52,13 +41,13 @@ namespace BackEnd.Controllers
         }
 
         [HttpGet("{id:int}")]
-        [ProducesResponseType(typeof(ResponseListDTO<ClienteDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseListDTO<VentaDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> GetById(int id)
         {
             try
             {
-                var entity = await clienteRN.getById(id);
+                var entity = await ventaRN.getById(id);
                 return Ok(entity);
 
             }
@@ -69,13 +58,13 @@ namespace BackEnd.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(ResponseListDTO<ClienteDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseListDTO<VentaDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult> postInsert([FromBody] ClienteInsertDTO clienteInsertDTO)
+        public async Task<ActionResult> postInsert([FromBody] VentaInsertDTO ventaInsertDTO)
         {
             try
             {
-                var entity = await clienteRN.postInsert(clienteInsertDTO);
+                var entity = await ventaRN.postInsert(ventaInsertDTO);
                 return Ok(entity);
 
             }
@@ -85,13 +74,13 @@ namespace BackEnd.Controllers
             }
         }
         [HttpPut("{id:int}")]
-        [ProducesResponseType(typeof(ResponseListDTO<ClienteDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseListDTO<VentaDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult> putUpdate(int id, [FromBody] ClienteUpdateDTO clienteUpdateDTO)
+        public async Task<ActionResult> putUpdate(int id, [FromBody] VentaUpdateDTO ventaUpdateDTO)
         {
             try
             {
-                var entity = await clienteRN.putUpdate(id, clienteUpdateDTO);
+                var entity = await ventaRN.putUpdate(id, ventaUpdateDTO);
                 return Ok(entity);
 
             }
@@ -102,13 +91,13 @@ namespace BackEnd.Controllers
         }
 
         [HttpDelete("{id:int}")]
-        [ProducesResponseType(typeof(ResponseListDTO<ClienteDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseListDTO<VentaDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> delete(int id)
         {
             try
             {
-                var entity = await clienteRN.delete(id);
+                var entity = await ventaRN.delete(id);
                 return Ok(entity);
 
             }

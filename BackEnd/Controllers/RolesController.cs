@@ -3,7 +3,7 @@ using BackEnd.DTOs;
 using BackEnd.RN;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using BackEnd.DTOs.Pelicula;
+using BackEnd.DTOs.Rol;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 
@@ -12,24 +12,25 @@ namespace BackEnd.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class PeliculasController : ControllerBase
+    public class RolesController : ControllerBase
     {
-        private readonly PeliculaRN peliculaRN;
 
-        public PeliculasController(PeliculaRN peliculaRN)
+        private readonly RolRN rolRN;
+
+        public RolesController(RolRN rolRN)
         {
-            this.peliculaRN = peliculaRN;
+            this.rolRN = rolRN;
 
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(ResponseListDTO<PeliculaDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseListDTO<RolDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> Get([FromQuery] PaginacionDTO paginacion)
         {
             try
             {
-                var datos = await peliculaRN.getAll(paginacion);
+                var datos = await rolRN.getAll(paginacion);
                 return Ok(datos);
 
             }
@@ -38,14 +39,15 @@ namespace BackEnd.Controllers
                 return new ResponseError(StatusCodes.Status400BadRequest, ex.Message).GetObjectResult();
             }
         }
+
         [HttpGet("{id:int}")]
-        [ProducesResponseType(typeof(ResponseListDTO<CategoriaDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseListDTO<RolDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> GetById(int id)
         {
             try
             {
-                var entity = await peliculaRN.getById(id);
+                var entity = await rolRN.getById(id);
                 return Ok(entity);
 
             }
@@ -56,13 +58,13 @@ namespace BackEnd.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(ResponseListDTO<CategoriaDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseListDTO<RolDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult> postInsert([FromBody] PeliculaInsertDTO peliculaInsertDTO)
+        public async Task<ActionResult> postInsert([FromBody] RolInsertDTO rolInsertDTO)
         {
             try
             {
-                var entity = await peliculaRN.postInsert(peliculaInsertDTO);
+                var entity = await rolRN.postInsert(rolInsertDTO);
                 return Ok(entity);
 
             }
@@ -72,13 +74,13 @@ namespace BackEnd.Controllers
             }
         }
         [HttpPut("{id:int}")]
-        [ProducesResponseType(typeof(ResponseListDTO<CategoriaDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseListDTO<RolDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult> putUpdate(int id, [FromBody] PeliculaUpdateDTO peliculaUpdateDTO)
+        public async Task<ActionResult> putUpdate(int id, [FromBody] RolUpdateDTO rolUpdateDTO)
         {
             try
             {
-                var entity = await peliculaRN.putUpdate(id, peliculaUpdateDTO);
+                var entity = await rolRN.putUpdate(id, rolUpdateDTO);
                 return Ok(entity);
 
             }
@@ -89,13 +91,13 @@ namespace BackEnd.Controllers
         }
 
         [HttpDelete("{id:int}")]
-        [ProducesResponseType(typeof(ResponseListDTO<CategoriaDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseListDTO<RolDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> delete(int id)
         {
             try
             {
-                var entity = await peliculaRN.delete(id);
+                var entity = await rolRN.delete(id);
                 return Ok(entity);
 
             }

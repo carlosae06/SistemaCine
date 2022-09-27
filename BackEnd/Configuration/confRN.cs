@@ -22,9 +22,14 @@ namespace BackEnd.Configuration
             services.AddTransient<PersonaRN>();
             services.AddTransient<UsuarioRN>();
             services.AddTransient<ClienteRN>();
-
-
-
+            services.AddTransient<ControlRN>();
+            services.AddTransient<TicketRN>();
+            services.AddTransient<SalaRN>();
+            services.AddTransient<SeccionRN>();
+            services.AddTransient<ButacaRN>();
+            services.AddTransient<FuncionRN>();
+            services.AddTransient<RolRN>();
+            services.AddTransient<VentaRN>();
 
             return services;
 

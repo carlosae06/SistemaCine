@@ -6,6 +6,11 @@ using BackEnd.Helpers;
 using BackEnd.Models;
 using Microsoft.EntityFrameworkCore;
 using BackEnd.DTOs.Usuario;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BackEnd.RN
 {
@@ -13,11 +18,13 @@ namespace BackEnd.RN
     {
         private readonly CineContext context;
         private readonly IMapper mapper;
+        private readonly IConfiguration configuration;
 
-        public UsuarioRN(CineContext context, IMapper mapper)
+        public UsuarioRN(CineContext context, IMapper mapper, IConfiguration configuration)
         {
             this.context = context;
             this.mapper = mapper;
+            this.configuration = configuration;
         }
 
         public async Task<ResponseListDTO<UsuarioDTO>> getAll(PaginacionDTO paginacion)
@@ -64,6 +71,7 @@ namespace BackEnd.RN
         {
 
             var entity = mapper.Map<Usuario>(usuarioInsertDTO);
+            entity.Password = Encrypt.GetSHA256(usuarioInsertDTO.Password);
 
             context.Usuarios.Add(entity);
 
@@ -72,13 +80,13 @@ namespace BackEnd.RN
             if (entity == null)
                 throw new Exception("No existe el recurso");
 
-            //var categoriaDTO = mapper.Map<CategoriaDTO>(entity);
+            var usuario = mapper.Map<UsuarioInsertDTO>(entity);
             return new ResponseDTO<UsuarioInsertDTO>
             {
                 Success = true,
                 StatusCode = 200,
                 Message = "OK",
-                value = usuarioInsertDTO,
+                value = usuario,
             };
 
         }
@@ -131,6 +139,90 @@ namespace BackEnd.RN
                 value = usuario,
             };
 
+        }
+
+        public async Task<ResponseDTO<UserToken>> Login([FromBody] UsuarioLoginDTO loginDTO)
+        {
+            try
+            {
+                var pass = Encrypt.GetSHA256(loginDTO.Password);
+
+                var usuario = await context.Usuarios
+                    .Include(x => x.IdRolNavigation)
+                    .FirstOrDefaultAsync(x => x.UserName == loginDTO.UserName && x.Password == pass && x.Estado);
+                if (usuario == null)
+                    
+                    return new ResponseDTO<UserToken>
+                    {
+                        Success = false,
+                        StatusCode = 500,
+                        Message = "",
+                        value = null,
+
+                    };
+
+                var userdto = mapper.Map<UsuarioDTO>(usuario);
+
+                var token = ConstruirToken(userdto);
+
+
+                return new ResponseDTO<UserToken>
+                {
+                    Success = true,
+                    StatusCode = 200,
+                    Message = "OK",
+                    value = token,
+
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+                return new ResponseDTO<UserToken>
+                {
+                    Success = false,
+                    StatusCode = 500,
+                    Message = ex.Message,
+                    value = null,
+
+                };
+            }
+
+        }
+
+
+
+        private UserToken ConstruirToken(UsuarioDTO usuario)
+        {
+
+            var claims = new List<Claim>()
+            {
+                new Claim(ClaimTypes.Name,usuario.UserName),
+                new Claim(ClaimTypes.Role,usuario.RolCod),
+
+            };
+
+            claims.Add(new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString()));
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["jwt:key"]));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var expiracion = DateTime.UtcNow.AddDays(2);
+
+            JwtSecurityToken token = new JwtSecurityToken(
+                   issuer: null,
+                   audience: null,
+                   claims: claims,
+                   expires: expiracion,
+                    signingCredentials: creds);
+
+
+            return new UserToken()
+            {
+                Token = new JwtSecurityTokenHandler().WriteToken(token),
+                Expiracion = expiracion,
+            };
         }
     }
 }

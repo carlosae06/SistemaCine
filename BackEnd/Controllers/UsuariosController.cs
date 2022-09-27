@@ -23,12 +23,12 @@ namespace BackEnd.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class UsuarioController : ControllerBase
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public class UsuariosController : ControllerBase
     {
         private readonly UsuarioRN usuarioRN;
 
-        public UsuarioController(UsuarioRN usuarioRN)
+        public UsuariosController(UsuarioRN usuarioRN)
         {
             this.usuarioRN = usuarioRN;
 
@@ -116,6 +116,25 @@ namespace BackEnd.Controllers
             {
                 return new ResponseError(StatusCodes.Status400BadRequest, ex.Message).GetObjectResult();
             }
+        }
+        [HttpPost("Login")]
+        [AllowAnonymous]
+        [ProducesResponseType(typeof(ResponseListDTO<UserToken>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseError), StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult> login([FromBody] UsuarioLoginDTO usuarioLoginDTO) 
+        {
+
+            try
+            {
+                var entity = await usuarioRN.Login(usuarioLoginDTO);
+                return Ok(entity);
+            }
+            catch (Exception ex)
+            {
+
+                return new ResponseError(StatusCodes.Status400BadRequest, ex.Message).GetObjectResult();
+            }
+        
         }
     }
 }

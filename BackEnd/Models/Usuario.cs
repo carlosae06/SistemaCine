@@ -14,7 +14,7 @@ namespace BackEnd.Models
         public string UserName { get; set; } = null!;
         public string Password { get; set; } = null!;
         public string? Correo { get; set; }
-        public bool? Estado { get; set; }
+        public bool Estado { get; set; }
         public int Idpersona { get; set; }
         public int IdRol { get; set; }
 

@@ -1,46 +1,36 @@
-﻿using AutoMapper;
-using BackEnd.Data;
+﻿using BackEnd.DTOs.Categoria;
 using BackEnd.DTOs;
-using BackEnd.DTOs.Categoria;
-using BackEnd.DTOs.Persona;
-using BackEnd.DTOs.Usuario;
-using BackEnd.Helpers;
-using BackEnd.Models;
 using BackEnd.RN;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using BackEnd.DTOs.Sala;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BackEnd.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class PersonaController : ControllerBase
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public class SalasController : ControllerBase
     {
-        private readonly PersonaRN personaRN;
 
-        public PersonaController(PersonaRN personaRN)
+        private readonly SalaRN salaRN;
+
+        public SalasController(SalaRN salaRN)
         {
-            this.personaRN = personaRN;
+            this.salaRN = salaRN;
 
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(ResponseListDTO<PersonaDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseListDTO<SalaDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> Get([FromQuery] PaginacionDTO paginacion)
         {
             try
             {
-                var datos = await personaRN.getAll(paginacion);
+                var datos = await salaRN.getAll(paginacion);
                 return Ok(datos);
 
             }
@@ -51,13 +41,13 @@ namespace BackEnd.Controllers
         }
 
         [HttpGet("{id:int}")]
-        [ProducesResponseType(typeof(ResponseListDTO<PersonaDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseListDTO<SalaDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> GetById(int id)
         {
             try
             {
-                var entity = await personaRN.getById(id);
+                var entity = await salaRN.getById(id);
                 return Ok(entity);
 
             }
@@ -68,13 +58,13 @@ namespace BackEnd.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(ResponseListDTO<PersonaDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseListDTO<SalaDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult> postInsert([FromBody] PersonaInsertDTO personaInsertDTO)
+        public async Task<ActionResult> postInsert([FromBody] SalaInsertDTO salaInsertDTO)
         {
             try
             {
-                var entity = await personaRN.postInsert(personaInsertDTO);
+                var entity = await salaRN.postInsert(salaInsertDTO);
                 return Ok(entity);
 
             }
@@ -84,13 +74,13 @@ namespace BackEnd.Controllers
             }
         }
         [HttpPut("{id:int}")]
-        [ProducesResponseType(typeof(ResponseListDTO<PersonaDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseListDTO<SalaDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult> putUpdate(int id, [FromBody] PersonaUpdateDTO personaUpdateDTO)
+        public async Task<ActionResult> putUpdate(int id, [FromBody] SalaUpdateDTO salaUpdateDTO)
         {
             try
             {
-                var entity = await personaRN.putUpdate(id, personaUpdateDTO);
+                var entity = await salaRN.putUpdate(id, salaUpdateDTO);
                 return Ok(entity);
 
             }
@@ -101,13 +91,13 @@ namespace BackEnd.Controllers
         }
 
         [HttpDelete("{id:int}")]
-        [ProducesResponseType(typeof(ResponseListDTO<PersonaDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseListDTO<SalaDTO>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseError), StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> delete(int id)
         {
             try
             {
-                var entity = await personaRN.delete(id);
+                var entity = await salaRN.delete(id);
                 return Ok(entity);
 
             }
