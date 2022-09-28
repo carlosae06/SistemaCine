@@ -1,0 +1,61 @@
+﻿
+
+<EditForm Model="salaInsert" OnValidSubmit="guardar">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <div class="row">
+        <label for="ci">COD:</label>
+        <InputText id="cod" class="form-control" @bind-Value="salaInsert.Cod"></InputText>
+        <ValidationMessage For="@(()=> salaInsert.Cod)" />
+    </div>
+    <div class="row">
+        <label for="nombre">Fila:</label>
+        <InputNumber id="fila" class="form-control" @bind-Value="salaInsert.Fila"></InputNumber>
+        <ValidationMessage For="@(()=> salaInsert.Fila)" />
+    </div>
+
+    <div class="row">
+        <label for="nombre">Columna:</label>
+        <InputNumber id="columna" class="form-control" @bind-Value="salaInsert.Columna"></InputNumber>
+        <ValidationMessage For="@(()=> salaInsert.Columna)" />
+    </div>
+    <div class="row">
+        <label for="nombre">Capacidad:</label>
+        <InputNumber id="capacidad" class="form-control" @bind-Value="salaInsert.Capacidad"></InputNumber>
+        <ValidationMessage For="@(()=> salaInsert.Capacidad)" />
+    </div>
+    @if (modo == "Modificar")
+    {
+        @*   <div class="mb-3 row">
+
+    <label for="url">Nombre:</label>
+    <div class="col-sm-8">
+    <InputCheckbox id="nombre" class="form-control" @bind-Value="@personaInsert.Nombre"></InputCheckbox>
+    <ValidationMessage For="@(()=> personaInsert.Nombre)" />
+    </div>
+
+    </div>*@
+    }
+
+    <br />
+    <div class="row">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+
+
+</EditForm>
+
+@code {
+
+    [Parameter] public string modo { get; set; } = "crear";
+    private DTOs.Sala.SalaActualizarDTO salaInsert = new DTOs.Sala.SalaActualizarDTO();
+
+    private async Task guardar()
+    {
+
+
+        await Task.Delay(2000);
+
+    }
+
+}
+

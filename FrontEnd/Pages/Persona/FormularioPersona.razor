@@ -1,0 +1,64 @@
+﻿
+<EditForm Model="personaInsert" OnValidSubmit="guardar">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <div class="row">
+        <label for="ci">Ci:</label>
+        <InputText id="ci" class="form-control" @bind-Value="personaInsert.Ci"></InputText>
+        <ValidationMessage For="@(()=> personaInsert.Ci)" />
+    </div>
+    <div class="row" >
+         <label for="nombre" >Nombre:</label>
+        <InputText id="nombre" class="form-control" @bind-Value="personaInsert.Nombre"></InputText>
+        <ValidationMessage For="@(()=> personaInsert.Nombre)" />
+    </div>
+ 
+    <div class="row" >
+         <label for="nombre" >Apellido Paterno:</label>
+        <InputText id="apellidoPaterno" class="form-control" @bind-Value="personaInsert.ApellidoPaterno"></InputText>
+        <ValidationMessage For="@(()=> personaInsert.ApellidoPaterno)" />
+    </div>
+    <div class="row">
+        <label for="nombre">Apellido Materno:</label>
+        <InputText id="apellidoMaterno" class="form-control" @bind-Value="personaInsert.ApellidoMaterno"></InputText>
+        <ValidationMessage For="@(()=> personaInsert.ApellidoMaterno)" />
+    </div>
+     <div class="row">
+        <label for="nombre">Telefono:</label>
+        <InputText id="telefono" class="form-control" @bind-Value="personaInsert.Telefono"></InputText>
+        <ValidationMessage For="@(()=> personaInsert.Telefono)" />
+    </div>
+    @if (modo == "Modificar")
+    {
+          @*   <div class="mb-3 row">
+
+            <label for="url">Nombre:</label>
+             <div class="col-sm-8">
+                <InputCheckbox id="nombre" class="form-control" @bind-Value="@personaInsert.Nombre"></InputCheckbox>
+                <ValidationMessage For="@(()=> personaInsert.Nombre)" />
+             </div>
+
+             </div>*@
+    }
+
+    <br />
+    <div class="row" >
+         <button type="submit" class="btn btn-primary" >Guardar</button>
+    </div>
+
+
+</EditForm>
+
+@code {
+
+    [Parameter] public string modo { get; set; } = "crear";
+    private DTOs.Persona.PersonaActualizarDTO personaInsert = new DTOs.Persona.PersonaActualizarDTO();
+
+    private async Task guardar()
+    {
+
+
+        await Task.Delay(2000);
+
+    }
+
+}
