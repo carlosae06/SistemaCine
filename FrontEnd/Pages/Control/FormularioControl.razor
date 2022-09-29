@@ -1,0 +1,39 @@
+﻿<EditForm Model="controlInsert" OnValidSubmit="guardar">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <div class="row">
+        <label for="idTicket">Ticket:</label>
+        <InputNumber id="idTicket" class="form-control" @bind-Value="controlInsert.IdTicket"></InputNumber>
+        <ValidationMessage For="@(()=> controlInsert.IdTicket)" />
+    </div>
+    
+    @if (modo == "Modificar")
+    {
+        @*   <div class="mb-3 row">
+
+    <label for="url">Nombre:</label>
+    <div class="col-sm-8">
+    <InputCheckbox id="nombre" class="form-control" @bind-Value="@controlInsert.Nombre"></InputCheckbox>
+    <ValidationMessage For="@(()=> controlInsert.Nombre)" />
+    </div>
+
+    </div>*@
+    }
+
+    <br />
+    <div class="row">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+
+
+</EditForm>
+
+@code {
+
+    [Parameter] public string modo { get; set; } = "crear";
+    private DTOs.Control.ControlActualizarDTO controlInsert = new DTOs.Control.ControlActualizarDTO();
+
+    private async Task guardar()
+    {
+        await Task.Delay(2000);
+    }
+}

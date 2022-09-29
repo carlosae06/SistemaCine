@@ -1,0 +1,65 @@
+﻿<EditForm Model="ventaInsert" OnValidSubmit="guardar">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <div class="row">
+        <label for="fecha">Fecha:</label>
+        <InputDate id="fecha" class="form-control" @bind-Value="ventaInsert.Fecha"></InputDate>
+        <ValidationMessage For="@(()=> ventaInsert.Fecha)" />
+    </div>
+    <div class="row">
+        <label for="precioTotal">Precio Total:</label>
+        <InputNumber id="precioTotal" class="form-control" @bind-Value="ventaInsert.PrecioTotal"></InputNumber>
+        <ValidationMessage For="@(()=> ventaInsert.PrecioTotal)" />
+    </div>
+
+    <div class="row">
+        <label for="documento">Documento:</label>
+        <InputText id="documento" class="form-control" @bind-Value="ventaInsert.Documento"></InputText>
+        <ValidationMessage For="@(()=> ventaInsert.Documento)" />
+    </div>
+    <div class="row">
+        <label for="numDocumento">Numero de Documento:</label>
+        <InputText id="numDocumento" class="form-control" @bind-Value="ventaInsert.NumDocumento"></InputText>
+        <ValidationMessage For="@(()=> ventaInsert.NumDocumento)" />
+    </div>
+    <div class="row">
+        <label for="complemento">Complemento:</label>
+        <InputText id="complemento" class="form-control" @bind-Value="ventaInsert.Complemento"></InputText>
+        <ValidationMessage For="@(()=> ventaInsert.Complemento)" />
+    </div>
+    <div class="row">
+        <label for="telefono">Telefono:</label>
+        <InputText id="telefono" class="form-control" @bind-Value="ventaInsert.Telefono"></InputText>
+        <ValidationMessage For="@(()=> ventaInsert.Telefono)" />
+    </div>
+   
+    @if (modo == "Modificar")
+    {
+        @*   <div class="mb-3 row">
+
+    <label for="url">Nombre:</label>
+    <div class="col-sm-8">
+    <InputCheckbox id="nombre" class="form-control" @bind-Value="@ventaInsert.Nombre"></InputCheckbox>
+    <ValidationMessage For="@(()=> ventaInsert.Nombre)" />
+    </div>
+
+    </div>*@
+    }
+
+    <br />
+    <div class="row">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+
+
+</EditForm>
+
+@code {
+
+    [Parameter] public string modo { get; set; } = "crear";
+    private DTOs.Venta.VentaActualizarDTO ventaInsert = new DTOs.Venta.VentaActualizarDTO();
+
+    private async Task guardar()
+    {
+        await Task.Delay(2000);
+    }
+}

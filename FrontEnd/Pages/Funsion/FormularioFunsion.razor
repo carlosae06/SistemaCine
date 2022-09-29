@@ -1,0 +1,54 @@
+﻿<EditForm Model="funsionlInsert" OnValidSubmit="guardar">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <div class="row">
+        <label for="fecha">Fecha:</label>
+        <InputDate id="fecha" class="form-control" @bind-Value="funsionlInsert.Fecha"></InputDate>
+        <ValidationMessage For="@(()=> funsionlInsert.Fecha)" />
+    </div>
+    <div class="row">
+        <label for="horario">Horario:</label>
+        <InputText id="horario" class="form-control" @bind-Value="funsionlInsert.Horario"></InputText>
+        <ValidationMessage For="@(()=> funsionlInsert.Horario)" />
+    </div>
+    <div class="row">
+        <label for="idSala">Sala:</label>
+        <InputNumber id="idSala" class="form-control" @bind-Value="funsionlInsert.IdSala"></InputNumber>
+        <ValidationMessage For="@(()=> funsionlInsert.IdSala)" />
+    </div>
+    <div class="row">
+        <label for="idPelicula">Pelicula:</label>
+        <InputNumber id="idPelicula" class="form-control" @bind-Value="funsionlInsert.IdPelicula"></InputNumber>
+        <ValidationMessage For="@(()=> funsionlInsert.IdPelicula)" />
+    </div>
+
+    @if (modo == "Modificar")
+    {
+        @*   <div class="mb-3 row">
+
+    <label for="url">Nombre:</label>
+    <div class="col-sm-8">
+    <InputCheckbox id="nombre" class="form-control" @bind-Value="@funsionlInsert.Nombre"></InputCheckbox>
+    <ValidationMessage For="@(()=> funsionlInsert.Nombre)" />
+    </div>
+
+    </div>*@
+    }
+
+    <br />
+    <div class="row">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+
+
+</EditForm>
+
+@code {
+
+    [Parameter] public string modo { get; set; } = "crear";
+    private DTOs.Funsion.FunsionActualizarDTO funsionlInsert = new DTOs.Funsion.FunsionActualizarDTO();
+
+    private async Task guardar()
+    {
+        await Task.Delay(2000);
+    }
+}

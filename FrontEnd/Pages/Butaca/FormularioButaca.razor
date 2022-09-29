@@ -1,0 +1,38 @@
+﻿
+<EditForm Model="butacaInsert" OnValidSubmit="guardar">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <div class="row">
+        <label for="idseccion">Seccion:</label>
+        <InputNumber id="idseccion" class="form-control" @bind-Value="butacaInsert.IdSeccion"></InputNumber>
+        <ValidationMessage For="@(()=> butacaInsert.IdSeccion)" />
+    </div>
+
+    @if (modo == "Modificar")
+    {
+        @*   <div class="mb-3 row">
+
+    <label for="url">Nombre:</label>
+    <div class="col-sm-8">
+    <InputCheckbox id="nombre" class="form-control" @bind-Value="@butacaInsert.Nombre"></InputCheckbox>
+    <ValidationMessage For="@(()=> butacaInsert.Nombre)" />
+    </div>
+
+    </div>*@
+    }
+
+    <br />
+    <div class="row">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+</EditForm>
+
+@code {
+
+    [Parameter] public string modo { get; set; } = "crear";
+    private DTOs.Butaca.ButacaActualizarDTO butacaInsert = new DTOs.Butaca.ButacaActualizarDTO();
+
+    private async Task guardar()
+    {
+        await Task.Delay(2000);
+    }
+}

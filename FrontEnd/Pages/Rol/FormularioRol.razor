@@ -1,7 +1,4 @@
-﻿
-
-
-<EditForm Model="rolInsert" OnValidSubmit="guardar">
+﻿<EditForm Model="rolInsert" OnValidSubmit="guardar">
     <DataAnnotationsValidator></DataAnnotationsValidator>
     <div class="row">
         <label for="nombre">COD:</label>
@@ -41,11 +38,6 @@
 
     private async Task guardar()
     {
-
-
         await Task.Delay(2000);
-
     }
-
-
 }

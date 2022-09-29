@@ -1874,23 +1874,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\carlos\\.nuget\\packages\\": {},
+    "C:\\Users\\HP\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\IIS EXPRESS\\SistemaCine\\FrontEnd\\FrontEnd.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\Desktop\\SistemaCine\\SistemaCine\\FrontEnd\\FrontEnd.csproj",
       "projectName": "FrontEnd",
-      "projectPath": "C:\\IIS EXPRESS\\SistemaCine\\FrontEnd\\FrontEnd.csproj",
-      "packagesPath": "C:\\Users\\carlos\\.nuget\\packages\\",
-      "outputPath": "C:\\IIS EXPRESS\\SistemaCine\\FrontEnd\\obj\\",
+      "projectPath": "C:\\Users\\HP\\Desktop\\SistemaCine\\SistemaCine\\FrontEnd\\FrontEnd.csproj",
+      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\HP\\Desktop\\SistemaCine\\SistemaCine\\FrontEnd\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\carlos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1946,6 +1946,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
+            "version": "[6.0.8, 6.0.8]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"

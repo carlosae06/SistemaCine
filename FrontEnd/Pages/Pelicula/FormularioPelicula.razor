@@ -1,0 +1,95 @@
+﻿@using Peliculas.DTOs
+
+
+<EditForm Model="PeliculaInsertar" OnValidSubmit="guardar" >
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <div class="row" >
+         <label for="nombre" >Nombre:</label>
+         <InputText id="nombre" class="form-control" @bind-Value="PeliculaInsertar.Nombre" ></InputText>
+        <ValidationMessage For="@(()=> PeliculaInsertar.Nombre)" />
+    </div>
+    <div class="row" >
+        <label for="clasificacion">Clasificacion:</label>
+        <InputText id="clasificacion" class="form-control" @bind-Value="PeliculaInsertar.Clasificacion"></InputText>
+        <ValidationMessage For="@(()=> PeliculaInsertar.Clasificacion)" />
+    </div>
+
+      <div class="row" >
+         <label for="fecha" >Fecha De Estreno:</label>
+         <InputDate  id="fecha" class="form-control" @bind-Value="PeliculaInsertar.FechaEstreno" ></InputDate>
+         <ValidationMessage For="@(()=> PeliculaInsertar.FechaEstreno)" />
+    </div>
+
+    <div class="row" >
+         <label for="protagonista" >Protagonista:</label>
+         <InputText typeof="protagonista" id="email" class="form-control" @bind-Value="PeliculaInsertar.Protagonista" ></InputText>
+        <ValidationMessage For="@(()=> PeliculaInsertar.Protagonista)" />
+    </div>
+   
+
+     <div class="row" >
+         <label for="director" >Director:</label>
+        <InputText id="director" class="form-control" @bind-Value="PeliculaInsertar.Director"></InputText>
+        <ValidationMessage For="@(()=> PeliculaInsertar.Director)" />
+    </div>
+
+      <div class="row" >
+        <label for="idioma">Idioma:</label>
+        <InputText id="idioma" class="form-control" @bind-Value="PeliculaInsertar.Idioma"></InputText>
+         <ValidationMessage For="@(()=> PeliculaInsertar.Idioma)" />
+    </div>
+
+         <div class="row" >
+        <label for="duracion">Duracion:</label>
+        <InputText id="duracion" class="form-control" @bind-Value="PeliculaInsertar.Duracion"></InputText>
+        <ValidationMessage For="@(()=> PeliculaInsertar.Duracion)" />
+    </div>
+
+    <div class="row">
+        <label for="sinopsis">Sinopsis:</label>
+        <InputText id="sinopsis" class="form-control" @bind-Value="PeliculaInsertar.Sinopsis"></InputText>
+        <ValidationMessage For="@(()=> PeliculaInsertar.Sinopsis)" />
+    </div>
+      <div class="row">
+        <label for="idCategoria">Categoria:</label>
+        <InputNumber id="idCategoria" class="form-control" @bind-Value="PeliculaInsertar.IdCategoria"></InputNumber>
+        <ValidationMessage For="@(()=> PeliculaInsertar.IdCategoria)" />
+    </div>
+
+    @if (modo == "Modificar")
+    {
+         <div class="mb-3 row">
+         
+         <label for="url" >Estado:</label>
+         <div class="col-sm-8">
+                <InputCheckbox id="estado" class="form-control" @bind-Value="@PeliculaInsertar.Estado"></InputCheckbox>
+                <ValidationMessage For="@(()=> PeliculaInsertar.Estado)" />
+         </div>
+        
+         </div>
+    }
+
+    <br />
+    <div class="row" >
+         <button type="submit" class="btn btn-primary" >Guardar</button>
+    </div>
+   
+
+</EditForm>
+
+
+
+@code {
+    [Parameter] public string modo { get; set; } = "crear";
+    private PeliculaActualizarDTO PeliculaInsertar = new PeliculaActualizarDTO();
+
+    private async Task guardar()
+    {
+       
+
+        await Task.Delay(2000);
+
+    }
+
+
+}

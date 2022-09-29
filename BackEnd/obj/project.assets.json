@@ -2909,24 +2909,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\carlos\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\GATEWAY\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\IIS EXPRESS\\SistemaCine\\BackEnd\\BackEnd.csproj",
+      "projectUniqueName": "C:\\PW II\\PROYECTO FINAL\\SistemaCine\\BackEnd\\BackEnd.csproj",
       "projectName": "BackEnd",
-      "projectPath": "C:\\IIS EXPRESS\\SistemaCine\\BackEnd\\BackEnd.csproj",
-      "packagesPath": "C:\\Users\\carlos\\.nuget\\packages\\",
-      "outputPath": "C:\\IIS EXPRESS\\SistemaCine\\BackEnd\\obj\\",
+      "projectPath": "C:\\PW II\\PROYECTO FINAL\\SistemaCine\\BackEnd\\BackEnd.csproj",
+      "packagesPath": "C:\\Users\\GATEWAY\\.nuget\\packages\\",
+      "outputPath": "C:\\PW II\\PROYECTO FINAL\\SistemaCine\\BackEnd\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\carlos\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\GATEWAY\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3002,7 +2997,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

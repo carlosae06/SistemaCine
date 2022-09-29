@@ -1,5 +1,7 @@
-﻿<h3>UsuarioModificar</h3>
+﻿@page "/usuario/editar/{id:int}"
+
+<FormularioUsuario modo="Modificar"></FormularioUsuario>
 
 @code {
-
+    [Parameter] public int id { get; set; }
 }
